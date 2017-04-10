@@ -1,0 +1,8 @@
+name: UhcWars
+version: 1.0-SNAPSHOT
+main: me.determined.uhcwars.UhcWars
+authors: [GRai600, Abhishek300, Rajan0]
+commands:
+  uhc:
+    description: "UHC Command"
+load: STARTUP
