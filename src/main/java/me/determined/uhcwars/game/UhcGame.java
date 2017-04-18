@@ -160,8 +160,6 @@ public class UhcGame {
 
     }
 
-
-
     public Location getRandomLocation(){
         double x = Math.random() * (radiusX - 25) * (Math.random() > 0.5 ? -1 : 1);
         double z = Math.random() * (radiusZ - 25) * (Math.random() > 0.5 ? -1 : 1);

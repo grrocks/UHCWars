@@ -4,6 +4,7 @@ import me.determined.uhcwars.UhcWars;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
 import java.io.*;
@@ -24,6 +25,13 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(AsyncPlayerPreLoginEvent e){
         if(!main.isCanPlayersJoin() &! isOp(e.getUniqueId().toString()))
             e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "A game is already going on");
+    }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent e){
+        if(main.getUhcGame() == null || main.getUhcGame().isDone())
+            return;
+        e.getEntity().kickPlayer(ChatColor.RED + "Thanks for playing! Better luck next time.");
     }
 
     public boolean isOp(String uuid){
