@@ -4,6 +4,7 @@ import me.determined.uhcwars.UhcWars;
 import org.bukkit.*;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -149,8 +150,16 @@ public class UhcGame {
                     }
                 } while(!goodLoc && (failedTimes < 200));
 
-                if(loc != null)
+                if(loc != null) {
                     p.teleport(loc);
+                    p.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 10));
+                    p.getInventory().addItem(new ItemStack(Material.LEATHER_BOOTS, 1));
+                    p.getInventory().addItem(new ItemStack(Material.LEATHER_LEGGINGS, 1));
+                    p.getInventory().addItem(new ItemStack(Material.LEATHER_CHESTPLATE, 1));
+                    p.getInventory().addItem(new ItemStack(Material.LEATHER_HELMET, 1));
+                    p.getInventory().addItem(new ItemStack(Material.WOOD_AXE, 1));
+                    //p.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1));
+                }
                 else {
                     p.kickPlayer("There was not enough space for you on the map!");
                 }
