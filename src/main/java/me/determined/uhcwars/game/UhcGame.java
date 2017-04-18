@@ -17,7 +17,6 @@ import java.util.Collection;
 public class UhcGame {
 
     private int radiusX = 500;
-    private int radiusZ = 500;
     private Collection<? extends Player> players;
     private boolean isDone;
     private String world = "World";
@@ -44,15 +43,15 @@ public class UhcGame {
         return radiusX;
     }
 
-    public int getRadiusZ() {
-        return radiusZ;
+    public void spawnChest(){
+
     }
 
     public void start() {
         startTime = System.currentTimeMillis();
-        randomizePlayers();
         getWorld().getWorldBorder().setCenter(0, 0);
         getWorld().getWorldBorder().setSize(radiusX*2);
+        randomizePlayers();
         Bukkit.broadcastMessage(ChatColor.AQUA + "Game has started!\nYou have 5 minutes before the border starts to close in!");
         new BukkitRunnable(){
             @Override
@@ -90,17 +89,8 @@ public class UhcGame {
         return Bukkit.getWorld(world);
     }
 
-//    public boolean isOutsideOfBorder(Player p) {
-//        Location loc = p.getLocation();
-//        WorldBorder border = p.getWorld().getWorldBorder();
-//        double x = loc.getX();
-//        double z = loc.getZ();
-//        double size = border.getSize();
-//        return ((x > size || (-x) > size) || (z > size || (-z) > size));
-//    }
-
     public boolean isLocationInCuboid(Location location) {
-        double size = getWorld().getWorldBorder().getSize() / 2 - 0.5d;
+        double size = getWorld().getWorldBorder().getSize() / 2 - 0.4d;
         Location location1 = new Location(getWorld(), -(size), 0, -(size));
         Location location2 = new Location(getWorld(), size, 258, size);
         boolean x = location.getX() > Math.min(location1.getX(), location2.getX()) && location.getX() < Math.max(location1.getX(), location2.getX());
@@ -170,12 +160,16 @@ public class UhcGame {
     }
 
     public Location getRandomLocation(){
-        double x = Math.random() * (radiusX - 25) * (Math.random() > 0.5 ? -1 : 1);
-        double z = Math.random() * (radiusZ - 25) * (Math.random() > 0.5 ? -1 : 1);
+        double x = Math.random() * (getSize() - 25) * (Math.random() > 0.5 ? -1 : 1);
+        double z = Math.random() * (getSize() / 2 - 25) * (Math.random() > 0.5 ? -1 : 1);
 
         Location loc = new Location(Bukkit.getWorld(world), x, 0, z);
 
         loc.setY(loc.getWorld().getHighestBlockYAt(loc));
         return loc;
+    }
+
+    public double getSize(){
+        return getWorld().getWorldBorder().getSize() / 2;
     }
 }
