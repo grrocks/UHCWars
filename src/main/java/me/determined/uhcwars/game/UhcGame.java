@@ -18,12 +18,14 @@ public class UhcGame {
 
     private int radiusX = 500;
     private Collection<? extends Player> players;
+    private Collection<? extends Player> alivePlayers;
     private boolean isDone;
     private String world = "World";
     private Long startTime;
 
     public UhcGame(Collection<? extends Player> players){
         this.players = players;
+        this.alivePlayers = players;
         this.isDone = false;
     }
 
@@ -37,6 +39,10 @@ public class UhcGame {
 
     public Collection<? extends Player> getPlayers() {
         return players;
+    }
+
+    public Collection<? extends Player> getAlivePlayers() {
+        return alivePlayers;
     }
 
     public int getRadiusX() {

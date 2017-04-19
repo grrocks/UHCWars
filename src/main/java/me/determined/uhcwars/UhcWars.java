@@ -20,9 +20,7 @@ public final class UhcWars extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        deleteWorld("world");
-        deleteWorld("world_nether");
-        deleteWorld("world_the_end");
+        deleteWorlds();
         registerCommands();
         registerListeners();
         main = this;
@@ -41,6 +39,12 @@ public final class UhcWars extends JavaPlugin {
             e.printStackTrace();
             System.out.print("Oceans will be present");
         }
+    }
+
+    public void deleteWorlds(){
+        deleteWorld("world");
+        deleteWorld("world_nether");
+        deleteWorld("world_the_end");
     }
 
     public boolean deleteWorld(String name) {
@@ -101,6 +105,5 @@ public final class UhcWars extends JavaPlugin {
     public void setCanPlayersJoin(boolean canPlayersJoin) {
         this.canPlayersJoin = canPlayersJoin;
     }
-
 
 }
