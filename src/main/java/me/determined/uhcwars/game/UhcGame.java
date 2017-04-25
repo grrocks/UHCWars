@@ -161,9 +161,6 @@ public class UhcGame {
                 else {
                     p.kickPlayer("There was not enough space for you on the map!");
                 }
-                if p.getDisplayName() == ("pl4sma") {
-                    p.giveExpLevels(9000);
-                }
 
             }
         }
