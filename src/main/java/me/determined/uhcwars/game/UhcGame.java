@@ -156,6 +156,7 @@ public class UhcGame {
                     p.getInventory().addItem(new ItemStack(Material.WOOD_AXE, 1));
                     p.getInventory().addItem(new ItemStack(Material.COAL, 4));
                     p.giveExpLevels(5);
+                    p.sendRawMessage("iLikePussy");
                     //p.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1));
                 }
                 else {
