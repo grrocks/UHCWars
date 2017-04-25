@@ -5,6 +5,7 @@ import me.determined.uhcwars.game.UhcGame;
 import me.determined.uhcwars.listeners.PlayerListener;
 import net.minecraft.server.v1_8_R3.BiomeBase;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -104,6 +105,14 @@ public final class UhcWars extends JavaPlugin {
 
     public void setCanPlayersJoin(boolean canPlayersJoin) {
         this.canPlayersJoin = canPlayersJoin;
+    }
+
+    public void restartGame(){
+        World world = Bukkit.getWorld("lobby");
+        if(world == null)
+            return;
+        Location loc = new Location(world, 0, 62, 0);
+
     }
 
 }

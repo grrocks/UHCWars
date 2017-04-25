@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -65,7 +66,26 @@ public class PlayerListener implements Listener {
     }
 
     public boolean shouldFinish(){
-        //if(main.getUhcGame().getAlivePlayers().size() <= 1)
+
+        switch(main.getUhcGame().getAlivePlayers().size()){
+            case 0:
+                if(clearPlayers())
+            case 1:
+
+                break;
+            default:
+                return false;
+        }
+    }
+
+    public boolean clearPlayers(){
+        World world = Bukkit.getWorld("world");
+        if(world == null)
+            return false;
+        Location loc = new Location(world, 0, 62, 0);
+        for(Player p : world.getPlayers())
+            p.teleport(loc);
+        return true;
     }
 
     @EventHandler
