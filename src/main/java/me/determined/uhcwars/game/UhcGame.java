@@ -154,6 +154,8 @@ public class UhcGame {
                     p.getInventory().addItem(new ItemStack(Material.LEATHER_CHESTPLATE, 1));
                     p.getInventory().addItem(new ItemStack(Material.LEATHER_HELMET, 1));
                     p.getInventory().addItem(new ItemStack(Material.WOOD_AXE, 1));
+                    p.getInventory().addItem(new ItemStack(Material.COAL, 4));
+                    p.giveExpLevels(5);
                     //p.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1));
                 }
                 else {
