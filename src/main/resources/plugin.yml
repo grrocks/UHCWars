@@ -5,4 +5,3 @@ authors: [GRai600, Abhishek300, Rajan0]
 commands:
   uhc:
     description: "UHC Command"
-load: STARTUP

@@ -18,14 +18,14 @@ public class UhcGame {
 
     private int radiusX = 500;
     private Collection<? extends Player> players;
-    private Collection<? extends Player> alivePlayers;
+    private volatile ArrayList<Player> alivePlayers = new ArrayList<>();
     private boolean isDone;
-    private String world = "World";
+    private String world = "game";
     private Long startTime;
 
     public UhcGame(Collection<? extends Player> players){
         this.players = players;
-        this.alivePlayers = players;
+        alivePlayers.addAll(players);
         this.isDone = false;
     }
 
@@ -45,19 +45,28 @@ public class UhcGame {
         return alivePlayers;
     }
 
+    public synchronized void removePlayer(Player p){
+        if(getAlivePlayers().contains(p))
+            getAlivePlayers().remove(p);
+    }
+
     public int getRadiusX() {
         return radiusX;
     }
 
     public void spawnChest(){
-
+        //getWorld().spawnFallingBlock();
     }
 
     public void start() {
+        if(getWorld() == null){
+            new WorldCreator("game").createWorld();
+        }
         startTime = System.currentTimeMillis();
         getWorld().getWorldBorder().setCenter(0, 0);
         getWorld().getWorldBorder().setSize(radiusX*2);
         randomizePlayers();
+        getWorld().setTime(600L);
         Bukkit.broadcastMessage(ChatColor.AQUA + "Game has started!\nYou have 5 minutes before the border starts to close in!");
         new BukkitRunnable(){
             @Override
@@ -156,7 +165,6 @@ public class UhcGame {
                     p.getInventory().addItem(new ItemStack(Material.WOOD_AXE, 1));
                     p.getInventory().addItem(new ItemStack(Material.COAL, 4));
                     p.giveExpLevels(5);
-                    p.sendRawMessage("iLikePussy");
                     //p.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1));
                 }
                 else {

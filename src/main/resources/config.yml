@@ -1,0 +1,23 @@
+loot:
+  '1':
+    material: DIAMOND_SWORD
+    weightedRandom: 20
+    displayName: '&2'
+    haveLore: true
+    lore:
+    - '&1Special Sword'
+    haveEnchantments: false
+    enchantments:
+    - DURABILITY,2
+    amount: 4
+  '2':
+    material: DIAMOND_CHESTPLATE
+    weightedRandom: 100
+    displayName: '&2Raid Chestplate'
+    haveLore: true
+    lore:
+    - '&1Special Chestplate'
+    haveEnchantments: true
+    enchantments:
+    - DURABILITY,2
+    amount: 1
