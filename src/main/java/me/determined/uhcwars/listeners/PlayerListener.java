@@ -83,7 +83,7 @@ public class PlayerListener implements Listener {
         switch(main.getUhcGame().getAlivePlayers().size()){
             case 0:
                 clearPlayers();
-                main.getUhcGame().setDone(true);
+                main.getUhcGame().end();
                 main.restartGame();
                 return true;
             case 1:
@@ -92,7 +92,7 @@ public class PlayerListener implements Listener {
                 winner.sendMessage(ChatColor.GREEN + "You won!!!!!!! You beat "
                         + main.getUhcGame().getPlayers().size() + " players!");
                 Bukkit.broadcastMessage(ChatColor.AQUA + winner.getName() + " has won the UHC game!");
-                main.getUhcGame().setDone(true);
+                main.getUhcGame().end();
                 main.restartGame();
                 return true;
             default:

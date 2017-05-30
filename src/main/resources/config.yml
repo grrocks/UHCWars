@@ -2,18 +2,18 @@ loot:
   '1':
     material: DIAMOND_SWORD
     weightedRandom: 20
-    displayName: '&2'
+    displayName: '&2Dagger!'
     haveLore: true
     lore:
     - '&1Special Sword'
-    haveEnchantments: false
+    haveEnchantments: true
     enchantments:
-    - DURABILITY,2
-    amount: 4
+    - SHARPNESS,3
+    amount: 1
   '2':
     material: DIAMOND_CHESTPLATE
-    weightedRandom: 100
-    displayName: '&2Raid Chestplate'
+    weightedRandom: 10
+    displayName: '&2Chestplate OP'
     haveLore: true
     lore:
     - '&1Special Chestplate'
@@ -21,3 +21,36 @@ loot:
     enchantments:
     - DURABILITY,2
     amount: 1
+  '3':
+    material: COMPASS
+    weightedRandom: 0
+    displayName: '&2PLayer Finder!'
+    haveLore: true
+    lore:
+    - '&1This will point to the closest player!'
+    haveEnchantments: false
+    enchantments:
+    - DURABILITY,3
+    amount: 1
+  '4':
+    material: OBSIDIAN
+    weightedRandom: 20
+    displayName: 'OBSIDIAN'
+    haveLore: false
+    lore:
+    - '&1Special Sword'
+    haveEnchantments: false
+    enchantments:
+    - SHARPNESS,3
+    amount: 5
+  '5':
+    material: GOLDEN_APPLE
+    weightedRandom: 10
+    displayName: 'GOLDEN APPLE'
+    haveLore: false
+    lore:
+    - '&1Special Sword'
+    haveEnchantments: false
+    enchantments:
+    - SHARPNESS,3
+    amount: 3

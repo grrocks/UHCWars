@@ -17,7 +17,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public final class UhcWars extends JavaPlugin {
@@ -25,12 +24,12 @@ public final class UhcWars extends JavaPlugin {
     private boolean canPlayersJoin = true;
     private UhcGame uhcGame;
     public static UhcWars main;
-    public HashMap<String, ArrayList<ItemStack>> lootMap = new HashMap<>();
     public ArrayList<DropItemStack> dropItemStacks = new ArrayList<>();
 
     @Override
     public void onEnable() {
         main = this;
+        saveDefaultConfig();
         registerCommands();
         registerListeners();
         setLobbyWorld();
@@ -48,8 +47,8 @@ public final class UhcWars extends JavaPlugin {
 
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-            System.out.print("Oceans will be present");
+//            e.printStackTrace();
+//            System.out.print("Oceans will be present");
         }
         ConfigurationSection config = getConfig().getConfigurationSection("loot");
 
@@ -58,7 +57,7 @@ public final class UhcWars extends JavaPlugin {
             List<String> lore = config.getBoolean(path + ".haveLore") ? config.getStringList(path + ".lore") : null;
             List<String> enchantments = config.getBoolean(path + ".haveEnchantments") ? config.getStringList(path + ".enchantments") : null;
             dropItemStacks.add(new DropItemStack(createItem(mat, config.getString(path + ".displayName"), lore, enchantments,
-                    Integer.parseInt(config.getString(path + ".amount"))), config.getInt("weightedRandom")));
+                    Integer.parseInt(config.getString(path + ".amount"))), config.getInt(path + ".weightedRandom")));
         }
     }
 
@@ -119,6 +118,7 @@ public final class UhcWars extends JavaPlugin {
         World world = Bukkit.getWorld("world");
         world.setSpawnLocation(0, 62, 0);
         world.setPVP(false);
+        world.setDifficulty(Difficulty.PEACEFUL);
         world.setMonsterSpawnLimit(0);
     }
 
@@ -191,11 +191,11 @@ public final class UhcWars extends JavaPlugin {
     }
 
     public void restartGame(){
-//        deleteWorlds();
-//        WorldCreator worldCreator = new WorldCreator("world");
+        deleteWorlds();
+        WorldCreator worldCreator = new WorldCreator("game");
 ////        WorldCreator worldCreator1 = new WorldCreator("world_nether");
 ////        WorldCreator worldCreator2 = new WorldCreator("world_the_end");
-//        worldCreator.createWorld();
+        worldCreator.createWorld();
 //        worldCreator1.createWorld();
 //        worldCreator2.createWorld();
     }

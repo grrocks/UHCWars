@@ -47,7 +47,8 @@ public class UhcCmd implements CommandExecutor {
     public String getHelpMessage(CommandSender sender) {
         StringBuilder msg = new StringBuilder();
 
-        msg.append(ChatColor.translateAlternateColorCodes('&', "&7[&aUHC&7] ") + ChatColor.DARK_GRAY + "====== " + ChatColor.GREEN + "Help Menu" + ChatColor.DARK_GRAY + " ======\n");
+        msg.append(ChatColor.translateAlternateColorCodes('&', "&7[&aUHC&7] ")
+                + ChatColor.DARK_GRAY + "====== " + ChatColor.GREEN + "Help Menu" + ChatColor.DARK_GRAY + " ======\n");
 
         if (sender.isOp()) {
             msg.append(ChatColor.GREEN + "/uhc start - Start the UHC War" + "\n");
